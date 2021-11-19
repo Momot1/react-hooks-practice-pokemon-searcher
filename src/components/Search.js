@@ -1,11 +1,17 @@
 import React from "react";
 
-function Search() {
+function Search({onSearch}) {
+  function handleSubmit(e){
+    if(e.code === "Enter"){
+      onSearch(e.target.value)
+    }
+  }
+
   return (
     <div className="ui search">
       <div className="ui icon input">
-        <input className="prompt" />
-        <i className="search icon" />
+          <input className="prompt" onKeyDown={handleSubmit}/>
+          <i className="search icon" />
       </div>
     </div>
   );
